@@ -1,104 +1,133 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-*{
+/* Variáveis */
+$primary-color: #4CAF50;
+$secondary-color: #333;
+$background-color: #f4f4f9;
+$text-color: #444;
+$accent-color: #ff5722;
+$font-stack: 'Arial', sans-serif;
+
+/* Reset básico */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
 }
-nav{
-    background-color: #18929D;
-    padding: 10px 60px;
+
+body {
+    font-family: $font-stack;
+    background-color: $background-color;
+    color: $text-color;
+    line-height: 1.6;
+    padding: 0 2rem;
+}
+
+nav {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: center;
+    background-color: $secondary-color;
+    padding: 1rem 2rem;
+    color: white;
+
+    .logo a {
+        font-size: 1.5rem;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .menu h2 {
+        font-size: 1rem;
+        color: white;
+    }
 }
-nav .logo a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 35px;
-    font-weight: 600;
-}
-nav ul{
-    display: flex;
-    align-items: center;
-    list-style: none;
-    padding: 10px;
-}
-nav li{
-    margin-left: 7px;
-}
-nav li a{
-    text-decoration: none;
-    color: #fff;
-    font-size: 18px;
-    font-weight: 500;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: 0.3s;
-}
-nav li a:hover{
-    background-color: white;
-    color: black;
-}
-.banner{
-    height: 100vh;
-    background: linear-gradient( rgba(0,0,0,0.281), rgba(0,0,0,0.308)),url('background.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+
+.banner {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-}
-.texto .titulo{
-    color: #fff;
-    font-size: 60px;
-    font-weight: 600;
-}
-.texto .sub_titulo{
-    color: #fff;
-    font-size: 58px;
-    font-weight: 600;
-}
-.texto .botoes{
-    margin-top: 30px;
-}
-.texto .botoes button{
-    height: 55px;
-    width: 170px;
-    border-radius: 5px;
-    border: 0;
-    margin: 0 10px;
-    font-size: 20px;
-    font-weight: 500;
-    padding: 0 10px;
-    cursor: pointer;
-    outline: none;
-    transition: 0.3s;
-}
-.texto .botoes button.n-overlay{
+    background-color: $primary-color;
     color: white;
-    background: none;
-    border: 2px solid white;
-}
-.texto .botoes button.n-overlay:hover{
-    color: black;
-    background-color: white;
-}
-.texto .botoes button.overlay{
-    background: white;
-    color: black;
-    animation: vibrar 0.5s ease-in-out infinite both;
-}
-@keyframes vibrar {
-    0%{
-        transform: scale(1);
+    padding: 4rem 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+
+    .content {
+        max-width: 800px;
+
+        .titulo {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitulo {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: lighten($primary-color, 30%);
+        }
+
+        .resumo {
+            font-size: 1.1rem;
+            color: lighten($text-color, 20%);
+        }
+
+        .descricao {
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+
+        .resumo-final {
+            font-size: 1rem;
+            margin: 1rem 0;
+            color: lighten($text-color, 10%);
+        }
+
+        .botoes {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+
+            .btn {
+                padding: 0.75rem 1.5rem;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 1rem;
+                text-decoration: none;
+                color: white;
+                transition: background-color 0.3s ease;
+
+                &.github {
+                    background-color: $accent-color;
+
+                    &:hover {
+                        background-color: darken($accent-color, 10%);
+                    }
+                }
+
+                &.subscribe {
+                    background-color: $primary-color;
+
+                    &:hover {
+                        background-color: darken($primary-color, 10%);
+                    }
+                }
+            }
+        }
     }
-    50%{
-        transform: scale(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .banner .content {
+        padding: 1rem;
     }
-    100%{
-        transform: scale(1);
+
+    .botoes {
+        flex-direction: column;
+        align-items: center;
     }
 }
