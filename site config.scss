@@ -3,7 +3,7 @@ $primary-color: #4CAF50;
 $secondary-color: #333;
 $background-color: #f4f4f9;
 $text-color: #444;
-$accent-color: #ff5722;
+$overlay-color: rgba(0, 0, 0, 0.5);
 $font-stack: 'Arial', sans-serif;
 
 /* Reset básico */
@@ -20,113 +20,125 @@ body {
     background-color: $background-color;
     color: $text-color;
     line-height: 1.6;
-    padding: 0 2rem;
-}
-
-nav {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: $secondary-color;
-    padding: 1rem 2rem;
-    color: white;
-
-    .logo a {
-        font-size: 1.5rem;
-        color: white;
-        text-decoration: none;
-        font-weight: bold;
-    }
-
-    .menu h2 {
-        font-size: 1rem;
-        color: white;
-    }
 }
 
 .banner {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background-color: $primary-color;
-    color: white;
-    padding: 4rem 2rem;
-    border-radius: 8px;
-    margin: 2rem 0;
+    height: 80vh;
+    background: url('images/banner.jpg') center/cover no-repeat;
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: $overlay-color;
+    }
 
     .content {
-        max-width: 800px;
+        position: relative;
+        text-align: center;
+        color: white;
 
         .titulo {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .subtitulo {
-            font-size: 1.5rem;
+            font-size: 3rem;
             margin-bottom: 1rem;
-            color: lighten($primary-color, 30%);
-        }
-
-        .resumo {
-            font-size: 1.1rem;
-            color: lighten($text-color, 20%);
         }
 
         .descricao {
-            font-size: 1rem;
-            margin: 1rem 0;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
         }
 
-        .resumo-final {
-            font-size: 1rem;
-            margin: 1rem 0;
-            color: lighten($text-color, 10%);
-        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            margin: 0 0.5rem;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
 
-        .botoes {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1.5rem;
+            &.github {
+                background-color: $secondary-color;
 
-            .btn {
-                padding: 0.75rem 1.5rem;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                font-size: 1rem;
-                text-decoration: none;
-                color: white;
-                transition: background-color 0.3s ease;
-
-                &.github {
-                    background-color: $accent-color;
-
-                    &:hover {
-                        background-color: darken($accent-color, 10%);
-                    }
+                &:hover {
+                    background-color: darken($secondary-color, 10%);
                 }
+            }
 
-                &.subscribe {
-                    background-color: $primary-color;
+            &.subscribe {
+                background-color: $primary-color;
 
-                    &:hover {
-                        background-color: darken($primary-color, 10%);
-                    }
+                &:hover {
+                    background-color: darken($primary-color, 10%);
                 }
             }
         }
     }
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .banner .content {
-        padding: 1rem;
+.info {
+    padding: 4rem 2rem;
+    text-align: center;
+
+    .info-content {
+        margin-bottom: 2rem;
+
+        h2 {
+            font-size: 2rem;
+            color: $primary-color;
+        }
+
+        h3 {
+            font-size: 1.2rem;
+            color: $text-color;
+        }
+
+        p {
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
     }
 
-    .botoes {
+    .flashcards {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+
+        img {
+            width: 100px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .banner {
+        height: 60vh;
+
+        .titulo {
+            font-size: 2rem;
+        }
+
+        .descricao {
+            font-size: 1.2rem;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+        }
+    }
+
+    .info .flashcards {
         flex-direction: column;
         align-items: center;
     }
